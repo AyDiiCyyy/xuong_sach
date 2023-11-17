@@ -23,9 +23,9 @@
             <div class="row mb menu">
                 <ul>
 
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="admin.html">Danh mục</a></li>
-                    <li><a href="">Hàng hóa</a></li>
+                    <li><a href="?act=home">Trang chủ</a></li>
+                    <li><a href="?act=danhmuc">Danh mục</a></li>
+                    <li><a href="?act=list_sach">Sách</a></li>
                     <li><a href="">Khách hàng</a></li>
                     <li><a href="">Bình luận</a></li>
                     <li><a href="">Thống kê</a></li>

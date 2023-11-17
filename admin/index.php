@@ -1,5 +1,6 @@
 <?php 
 require_once "../model/danhmuc.php";
+require_once "../model/sach.php";
 
 
 
@@ -68,7 +69,35 @@ switch ($act) {
             $VIEW = "danhmuc/sua.php";
         }
         // $VIEW = "danhmuc/them.php";
-        break;
+
+        case 'list_sach':
+            $title = "Danh mục sách";
+
+
+            $list_sach = load_all_sach();
+            $VIEW = "sach/danhsach.php";
+            break;
+        case "themsach":
+            $title = "Thêm sách";
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                extract($_POST);
+
+                // hình ảnh
+                $file=$_FILES['hinh'];
+                $hinh=$file['name'];
+                move_uploaded_file($file['tmp_name'],'../images/'.$hinh);
+
+                // thêm vào database
+
+                insert_sach($ten_sach, $hinh, $nha_xuat_ban, $so_luong, $gia, $mo_ta, $ngay_xuat_ban, $ma_danh_muc, 1);
+
+                header("location: ?act=list_sach");
+                die;
+
+            }
+
+            $danhmuc = load_all_danhmuc();
+            $VIEW = "sach/them.php";
     default:
         echo "<h1>FILE NOT FOUND</h1>";
 }
